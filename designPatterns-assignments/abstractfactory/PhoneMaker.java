@@ -8,44 +8,22 @@ package net.media.training.designpattern.abstractfactory;
  * To change this template use File | Settings | File Templates.
  */
 public class PhoneMaker {
-
     public Case buildPhone(String phoneType) {
-        Case phonecase;
+        Factory phoneFactory;
         if (phoneType.equals("Android")){
-            AndroidFactory androidFactory = new AndroidFactory();
-            phonecase = androidFactory.assemble();
+            phoneFactory = new AndroidFactory();
         }else {
-            IphoneFactory iphoneFactory = new IphoneFactory();
-            phonecase = iphoneFactory.assemble();
+            phoneFactory = new IphoneFactory();
         }
-        return phonecase;
 
-//        MotherBoard motherBoard;
-//        if (phoneType.equals("Android")) {
-//            motherBoard = new AndroidMotherBoard();
-//            motherBoard.attachBattery(new Battery());
-//            motherBoard.attachProcessor(new AndroidProcessor());
-//        } else {
-//            motherBoard = new IphoneMotherBoard();
-//            motherBoard.attachBattery(new Battery());
-//            motherBoard.attachProcessor(new IphoneProcessor());
-//        }
-//
-//        Screen screen;
-//        if (phoneType.equals("Android")) {
-//            screen = new AndroidScreen();
-//        } else {
-//            screen = new IphoneScreen();
-//        }
-//
-//        Case phoneCase;
-//        if (phoneType.equals("Android")) {
-//            phoneCase = new AndroidCase();
-//        } else {
-//            phoneCase = new IphoneCase();
-//        }
-//        phoneCase.attachMotherBoard(motherBoard);
-//        phoneCase.attachScreen(screen);
-//        return phoneCase;
+        Case phoneCase = phoneFactory.assembleCase();
+        Screen phoneScreen = phoneFactory.assembleScreen();
+        MotherBoard phoneMotherBoard = phoneFactory.assembleMotherboard();
+
+        phoneCase.attachMotherBoard(phoneMotherBoard);
+        phoneCase.attachScreen(phoneScreen);
+
+        return phoneCase;
+
     }
 }

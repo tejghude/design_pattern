@@ -13,6 +13,7 @@ public class CharacterTestClient {
     private Dog dog;
     private Robot robot;
 
+
     public CharacterTestClient() {
         robot = new Robot();
         dog = new Dog();

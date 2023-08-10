@@ -1,18 +1,25 @@
 package net.media.training.designpattern.abstractfactory;
 
 public class IphoneFactory implements Factory{
+
     @Override
-    public Case assemble(){
-        MotherBoard motherBoard;
-        motherBoard = new IphoneMotherBoard();
+    public MotherBoard assembleMotherboard() {
+        MotherBoard motherBoard = new IphoneMotherBoard();
         motherBoard.attachBattery(new Battery());
         motherBoard.attachProcessor(new IphoneProcessor());
-        Screen screen;
-        screen = new IphoneScreen();
-        Case phoneCase;
-        phoneCase = new IphoneCase();
-        phoneCase.attachMotherBoard(motherBoard);
-        phoneCase.attachScreen(screen);
+        return motherBoard;
+    }
+
+    @Override
+    public Screen assembleScreen() {
+        Screen screen = new IphoneScreen();
+        return screen;
+    }
+
+    @Override
+    public Case assembleCase() {
+        Case phoneCase = new IphoneCase();
         return phoneCase;
     }
+
 }

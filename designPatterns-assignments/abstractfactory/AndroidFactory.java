@@ -1,18 +1,25 @@
 package net.media.training.designpattern.abstractfactory;
 
 public class AndroidFactory implements Factory {
+
     @Override
-    public Case assemble(){
+    public MotherBoard assembleMotherboard() {
         MotherBoard motherBoard;
         motherBoard = new AndroidMotherBoard();
         motherBoard.attachBattery(new Battery());
         motherBoard.attachProcessor(new AndroidProcessor());
-        Screen screen;
-        screen = new AndroidScreen();
-        Case phoneCase;
-        phoneCase = new AndroidCase();
-        phoneCase.attachMotherBoard(motherBoard);
-        phoneCase.attachScreen(screen);
+        return motherBoard;
+    }
+
+    @Override
+    public Screen assembleScreen() {
+        Screen screen = new AndroidScreen();
+        return screen;
+    }
+
+    @Override
+    public Case assembleCase() {
+        Case phoneCase = new AndroidCase();
         return phoneCase;
     }
 }

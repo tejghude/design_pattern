@@ -1,5 +1,9 @@
 package net.media.training.designpattern.observer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: joelrosario
@@ -14,12 +18,21 @@ public class Sun {
     private final Dog dog;
     private final Cat cat;
 
+
+    List<Character> characters = new ArrayList<Character>();
+
     public Sun(Robot robot, Person person, Dog dog, Cat cat) {
         this.robot = robot;
         this.person = person;
         this.dog = dog;
         this.cat = cat;
+        characters.add(this.robot);
+        characters.add(this.person);
+        characters.add(this.dog);
+        characters.add(this.cat);
+
     }
+
 
     public boolean isUp() {
         return isUp;
@@ -27,41 +40,46 @@ public class Sun {
 
     public void set() {
         isUp = false;
-
-        if (robot.isOutdoors()) {
-            robot.notifySunSet();
+        for(Character character : characters){
+            if(character.isOutdoors()) character.notifySunSet();
         }
-
-        if (person.isOutdoors()) {
-            person.notifySunSet();
-        }
-
-        if (dog.isOutdoors()) {
-            dog.notifySunSet();
-        }
-
-        if (cat.isOutdoors()) {
-            cat.notifySunSet();
-        }
+//        if (robot.isOutdoors()) {
+//            robot.notifySunSet();
+//        }
+//
+//        if (person.isOutdoors()) {
+//            person.notifySunSet();
+//        }
+//
+//        if (dog.isOutdoors()) {
+//            dog.notifySunSet();
+//        }
+//
+//        if (cat.isOutdoors()) {
+//            cat.notifySunSet();
+//        }
     }
 
     public void rise() {
         isUp = true;
-
-        if (robot.isOutdoors()) {
-            robot.notifySunRose();
+        for(Character character : characters){
+            if(character.isOutdoors()) character.notifySunRose();
         }
-
-        if (person.isOutdoors()) {
-            person.notifySunRose();
-        }
-
-        if (dog.isOutdoors()) {
-            dog.notifySunRose();
-        }
-
-        if (cat.isOutdoors()) {
-            cat.notifySunRose();
-        }
+//
+//        if (robot.isOutdoors()) {
+//            robot.notifySunRose();
+//        }
+//
+//        if (person.isOutdoors()) {
+//            person.notifySunRose();
+//        }
+//
+//        if (dog.isOutdoors()) {
+//            dog.notifySunRose();
+//        }
+//
+//        if (cat.isOutdoors()) {
+//            cat.notifySunRose();
+//        }
     }
 }

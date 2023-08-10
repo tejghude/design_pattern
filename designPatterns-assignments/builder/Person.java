@@ -20,23 +20,6 @@ public class Person {
         this.country = country;
     }
 
-    public Person name (String personName){
-        this.name=personName;
-        return this;
-    }
-    public Person city (String personCity){
-        this.city= personCity;
-        return this;
-    }
-    public Person country (String  personCountry){
-        this.country =personCountry;
-        return this;
-    }
-    public Person id (int personId){
-        this.id=personId;
-        return this;
-    }
-
     public String getName() {
         return name;
     }
